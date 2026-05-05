@@ -1,55 +1,64 @@
-# 👨‍💻 Portfólio Acadêmico — Renan Silva dos Santos
-
-Bem-vindo(a) ao meu portfólio acadêmico! Este repositório reúne os projetos desenvolvidos ao longo da minha graduação em **Análise e Desenvolvimento de Sistemas (ADS)** na **UNICID**, com foco nas atividades de **Programação de Computadores** e **Engenharia de Soluções Lógicas** do 1º semestre de 2026.1.
-
-## 🎓 Sobre Mim
-Sou Renan Silva dos Santos, estudante do 1º semestre de **Análise e Desenvolvimento de Sistemas** na UNICID. Estou construindo uma base sólida em **lógica de programação, algoritmos e estruturas de dados em Python**, partindo do zero em programação e treinando cada conceito com projetos práticos entregues nas disciplinas do curso.
-
-## 📫 Contato
-* **E-mail:** comprasrsant@gmail.com
-* **LinkedIn:** [linkedin.com/in/renan-santos-7584901a1](https://www.linkedin.com/in/renan-santos-7584901a1)
-* **GitHub:** [github.com/Rsant271](https://github.com/Rsant271)
-* **Localização:** São Paulo, SP
-
-## 🛠️ Tecnologias e Ferramentas
-
-### Em estudo (faculdade)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-
-### Ferramentas de desenvolvimento
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
-![Google Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)
-
-## 📚 Projetos Acadêmicos
-
-| Projeto | Descrição | Link |
-|---|---|---|
-| 📊 Algoritmo de Auditoria de Dados | Algoritmo de auditoria de vendas com variáveis globais, funções e estruturas condicionais para disparar alertas. | [Ver projeto](./projeto-algoritmo-de-auditoria-de-dados/) |
-| 🚦 Engenharia de Soluções Lógicas | Sistema de farol inteligente para cidade inteligente — fluxograma, pseudocódigo e teste de mesa. | [Ver projeto](./projeto-engenharia-solucoes-logicas/) |
-| 🐍 Traduzindo Lógica para Python | Tradução de quatro pseudocódigos para Python funcional — vendas, clima, notas e poupança. | [Ver projeto](./projeto-traduzindo-logica-para-python/) |
-| 🌆 Engenharia de Contexto e Lógica Física | Análise de microclima (CETESB / CONAMA) e simulador de evacuação com `match-case` e `while`. | [Ver projeto](./projeto-engenharia-contexto-logica-fisica/) |
-| 🎨 Desenhando Emojis com Dados | Listas, tuplas e dicionários com 3 níveis de loops aninhados — pixel art, transposição e galeria. | [Ver projeto](./projeto-desenhando-emojis-com-dados/) |
-| 💰 Sistema de Caixa e Troco | Modularização Top-Down com 3 funções (validar, calcular, decompor) e algoritmo guloso de notas. | [Ver projeto](./projeto-sistema-caixa-e-troco/) |
-| 📄 Currículo | Currículo profissional em PDF gerado por script Python. | [Ver currículo](./cv/) |
-
-## 🎯 Objetivos de Carreira
-Construir uma trajetória sólida em **desenvolvimento de software**, dominando lógica de programação, algoritmos, estruturas de dados e boas práticas de engenharia para evoluir como desenvolvedor full-stack ao longo do curso de ADS.
-
-## 🎓 Formação
-**Análise e Desenvolvimento de Sistemas** — Universidade Cidade de São Paulo (UNICID) · 2026 — em andamento (1º semestre)
-
-## 🌟 Competências Comportamentais
-* Aprendizado autodidata e curiosidade técnica
-* Resolução de problemas com pensamento lógico
-* Organização e gestão de prioridades
-* Trabalho em equipe e comunicação clara
+# Renan Silva dos Santos
+> Estudante de Análise e Desenvolvimento de Sistemas — UNICID
 
 ---
 
-⭐ Se gostou de algum projeto, deixe uma estrela no repositório!
+### 📫 Contato & Redes Sociais
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/renan-santos-7584901a1)
+[![E-mail](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:comprasrsant@gmail.com)
+[![Currículo](https://img.shields.io/badge/Currículo-000000?style=for-the-badge&logo=read-the-docs&logoColor=white)](./cv/Renan_Silva_dos_Santos_CV.pdf)
+
+---
+
+### 👨‍💻 Sobre
+Atualmente cursando o 1º período de **Análise e Desenvolvimento de Sistemas** na UNICID. Estou construindo do zero uma base sólida em lógica de programação, algoritmos e estruturas de dados, com foco em **desenvolvimento de software** e boas práticas de engenharia.
+
+* **Habilidades Técnicas:** Python, HTML, CSS, JavaScript, Git e GitHub.
+* **Habilidades Socioemocionais:** Trabalho em equipe, comunicação assertiva, pensamento crítico e aprendizado autodidata.
+* **Experiência/Projetos Relevantes:** Conjunto de projetos práticos das disciplinas **Programação de Computadores** e **Engenharia de Soluções Lógicas**, cobrindo desde fluxograma e pseudocódigo até modularização Top-Down em Python.
+
+---
+
+### 🛠 Minhas Ferramentas Favoritas
+
+#### 💻 Linguagens e Tecnologias
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+#### 📓 Ambientes de Execução
+![Jupyter](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
+![Google Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)
+
+#### 🧰 Versionamento e Editores
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+
+---
+
+### 📂 Portfólio de Projetos
+
+#### 🐍 Programação em Python
+| Projeto | Descrição | Link |
+| :--- | :--- | :---: |
+| **Algoritmo de Auditoria de Dados** | Variáveis globais, funções e estruturas condicionais para disparar alertas em vendas suspeitas. | [Ver Projeto](./projeto-algoritmo-de-auditoria-de-dados/) |
+| **Traduzindo Lógica para Python** | Tradução de quatro pseudocódigos para Python funcional — vendas, clima, notas e poupança. | [Ver Projeto](./projeto-traduzindo-logica-para-python/) |
+| **Engenharia de Contexto e Lógica Física** | Listas, `for` aninhado, `match-case` e `while` aplicados a microclima e simulador de evacuação. | [Ver Projeto](./projeto-engenharia-contexto-logica-fisica/) |
+| **Desenhando Emojis com Dados** | Listas, tuplas e dicionários com 3 níveis de loops aninhados — pixel art, transposição e galeria. | [Ver Projeto](./projeto-desenhando-emojis-com-dados/) |
+| **Sistema de Caixa e Troco** | Modularização Top-Down com 3 funções (validar, calcular, decompor) e algoritmo guloso de notas. | [Ver Projeto](./projeto-sistema-caixa-e-troco/) |
+
+#### 🚦 Engenharia de Soluções Lógicas
+| Projeto | Descrição | Link |
+| :--- | :--- | :---: |
+| **Sistema de Farol Inteligente** | Fluxograma, pseudocódigo e teste de mesa para semáforos de uma cidade inteligente. | [Ver Projeto](./projeto-engenharia-solucoes-logicas/) |
+
+---
+
+### 🏗 Estrutura do Repositório
+Abaixo, a organização deste repositório para facilitar a navegação:
+
+- `root/`: Arquivo de apresentação principal (este README).
+- `/cv/`: Currículo profissional em PDF.
+- `/projeto-nome/`: Pasta contendo o código-fonte, documentação e o README específico de cada projeto acadêmico.
