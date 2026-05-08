@@ -48,6 +48,7 @@ Atualmente cursando o 1º período de **Análise e Desenvolvimento de Sistemas**
 | **Engenharia de Contexto e Lógica Física** | Listas, `for` aninhado, `match-case` e `while` aplicados a microclima e simulador de evacuação. | [Ver Projeto](./projeto-engenharia-contexto-logica-fisica/) |
 | **Desenhando Emojis com Dados** | Listas, tuplas e dicionários com 3 níveis de loops aninhados — pixel art, transposição e galeria. | [Ver Projeto](./projeto-desenhando-emojis-com-dados/) |
 | **Sistema de Caixa e Troco** | Modularização Top-Down com 3 funções (validar, calcular, decompor) e algoritmo guloso de notas. | [Ver Projeto](./projeto-sistema-caixa-e-troco/) |
+| **Sistema de Auditoria de Recursos Corporativos** | Recursão em árvore de dicionários, `*args`, `**kwargs` e decorator `@auditor` com cronometragem via `time`. | [Ver Projeto](./projeto-sistema-de-auditoria-de-recursos-corporativos/) |
 
 #### 🚦 Engenharia de Soluções Lógicas
 | Projeto | Descrição | Link |
