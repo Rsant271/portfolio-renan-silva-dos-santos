@@ -11,11 +11,11 @@
 ---
 
 ### 👨‍💻 Sobre
-Atualmente cursando o 1º período de **Análise e Desenvolvimento de Sistemas** na UNICID. Estou construindo do zero uma base sólida em lógica de programação, algoritmos e estruturas de dados, com foco em **desenvolvimento de software** e boas práticas de engenharia.
+Atualmente cursando o 2º período de **Análise e Desenvolvimento de Sistemas** na UNICID. Estou construindo do zero uma base sólida em lógica de programação, algoritmos e estruturas de dados, com foco em **desenvolvimento de software** e boas práticas de engenharia.
 
 * **Habilidades Técnicas:** Python, HTML, CSS, JavaScript, Git e GitHub.
 * **Habilidades Socioemocionais:** Trabalho em equipe, comunicação assertiva, pensamento crítico e aprendizado autodidata.
-* **Experiência/Projetos Relevantes:** Conjunto de projetos práticos das disciplinas **Programação de Computadores** e **Engenharia de Soluções Lógicas**, cobrindo desde fluxograma e pseudocódigo até modularização Top-Down em Python.
+* **Experiência/Projetos Relevantes:** Projetos práticos das disciplinas **Modelagem de Banco de Dados**, **Engenharia de Prompt e Aplicações em IA**, **Programação de Computadores** e **Engenharia de Soluções Lógicas**: modelo conceitual de uma clínica real, automação de atendimento por WhatsApp com IA e exercícios que vão do fluxograma à modularização Top-Down em Python.
 
 ---
 
@@ -39,6 +39,16 @@ Atualmente cursando o 1º período de **Análise e Desenvolvimento de Sistemas**
 ---
 
 ### 📂 Portfólio de Projetos
+
+#### 🗄️ Modelagem de Banco de Dados
+| Projeto | Descrição | Link |
+| :--- | :--- | :---: |
+| **Modelo Conceitual da Meneghini Odontologia** | Pesquisa de campo em uma clínica real, 3 fluxogramas de processo, requisitos, regras de negócio e DER com 12 entidades e 15 relacionamentos. | [Ver Projeto](./projeto-modelagem-banco-de-dados-meneghini/) |
+
+#### 🤖 Engenharia de Prompt e Aplicações em IA
+| Projeto | Descrição | Link |
+| :--- | :--- | :---: |
+| **Promptzeiros: Atendimento por WhatsApp com IA** | Trabalho em grupo: dois fluxos no n8n (atendimento com triagem BANT e disparo com travas anti-bloqueio) e system prompt com os 5 elementos de Carraro. | [Ver Projeto](./projeto-promptzeiros-atendimento-whatsapp-ia/) |
 
 #### 🐍 Programação em Python
 | Projeto | Descrição | Link |
