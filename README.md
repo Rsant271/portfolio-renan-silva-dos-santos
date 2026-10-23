@@ -13,7 +13,7 @@
 ### 👨‍💻 Sobre
 Atualmente cursando o 2º período de **Análise e Desenvolvimento de Sistemas** na UNICID. Estou construindo do zero uma base sólida em lógica de programação, algoritmos e estruturas de dados, com foco em **desenvolvimento de software** e boas práticas de engenharia.
 
-* **Habilidades Técnicas:** Python, HTML, CSS, JavaScript, Git e GitHub.
+* **Habilidades Técnicas:** Python, SQL (PostgreSQL), HTML, CSS, JavaScript, Git e GitHub.
 * **Habilidades Socioemocionais:** Trabalho em equipe, comunicação assertiva, pensamento crítico e aprendizado autodidata.
 * **Experiência/Projetos Relevantes:** Projetos práticos das disciplinas **Modelagem de Banco de Dados**, **Engenharia de Prompt e Aplicações em IA**, **Programação de Computadores** e **Engenharia de Soluções Lógicas**: modelo conceitual de uma clínica real, automação de atendimento por WhatsApp com IA e exercícios que vão do fluxograma à modularização Top-Down em Python.
 
@@ -26,6 +26,7 @@ Atualmente cursando o 2º período de **Análise e Desenvolvimento de Sistemas**
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/postgresql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
 #### 📓 Ambientes de Execução
 ![Jupyter](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
@@ -39,6 +40,12 @@ Atualmente cursando o 2º período de **Análise e Desenvolvimento de Sistemas**
 ---
 
 ### 📂 Portfólio de Projetos
+
+#### 💼 Projetos Pessoais
+| Projeto | Descrição | Link |
+| :--- | :--- | :---: |
+| **CRM de Leads para Disparos no WhatsApp** | Banco PostgreSQL com 8 tabelas, carga da planilha mensal de leads sem duplicar contato e tela local em FastAPI com leads, campanhas e bloqueios. Demonstração com dados fictícios e 133 testes. | [Ver Projeto](./projeto-crm-de-leads-whatsapp/) |
+| **Robô de Varredura de Leads (estudo de caso)** | Robô em Python, em uso desde setembro de 2026, que cruza as conversas do WhatsApp com a planilha de leads, grava os contatos novos e manda os casos de dúvida para revisão humana. | [Ver Projeto](./projeto-robo-varredura-de-leads/) |
 
 #### 🗄️ Modelagem de Banco de Dados
 | Projeto | Descrição | Link |
@@ -72,4 +79,4 @@ Abaixo, a organização deste repositório para facilitar a navegação:
 
 - `root/`: Arquivo de apresentação principal (este README).
 - `/cv/`: Currículo profissional em PDF.
-- `/projeto-nome/`: Pasta contendo o código-fonte, documentação e o README específico de cada projeto acadêmico.
+- `/projeto-nome/`: Pasta contendo o código-fonte, documentação e o README específico de cada projeto (acadêmico ou pessoal).

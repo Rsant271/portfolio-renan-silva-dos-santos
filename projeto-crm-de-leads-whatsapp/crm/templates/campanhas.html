@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Campanhas{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-1">Campanhas</h1>
+<div class="text-sm text-stone-500 mb-4">Números vêm da tabela de eventos.</div>
+<div class="bg-white rounded-lg shadow-sm overflow-x-auto">
+<table class="min-w-full text-sm">
+  <thead class="bg-stone-50 text-left text-xs uppercase text-stone-500"><tr><th class="px-3 py-2">Campanha</th><th class="px-3 py-2">Período</th><th class="px-3 py-2">Envios</th><th class="px-3 py-2">Leads</th><th class="px-3 py-2">Responderam</th><th class="px-3 py-2">Opt-out</th><th class="px-3 py-2"></th></tr></thead>
+  <tbody>{% for c in r.campanhas %}
+    <tr class="border-t"><td class="px-3 py-2 font-medium">{{c.nome}}</td><td class="px-3 py-2 text-xs">{{c.inicio|dt}} → {{ c.fim|dt if c.fim else 'em curso' }}</td><td class="px-3 py-2">{{c.envios}}</td><td class="px-3 py-2">{{c.leads}}</td><td class="px-3 py-2">{{c.respostas}}{% if c.leads %} <span class="text-xs text-stone-400">({{ (100*c.respostas/c.leads)|round(1) }}%)</span>{% endif %}</td><td class="px-3 py-2">{{c.optouts}}</td><td class="px-3 py-2 text-xs"><a class="text-[#1e3a5f] hover:underline" href="/leads?campanha={{c.nome}}">ver leads</a></td></tr>
+  {% endfor %}</tbody>
+</table>
+</div>
+{% endblock %}

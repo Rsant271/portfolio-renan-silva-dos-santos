@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Leads{% endblock %}
+{% block content %}
+<div class="flex items-end justify-between mb-4">
+  <div>
+    <h1 class="text-2xl font-semibold">Leads</h1>
+    <div class="text-sm text-stone-500">{{ r.total }} pessoas na base · {{ r.com_campanha }} já receberam campanha · {{ r.suprimidos }} não recebem</div>
+  </div>
+  <div class="flex gap-2 text-xs">
+    {% for c in cores %}<a href="/leads?cor={{c}}" class="px-2 py-1 rounded cor-{{c}}">{{ c }} {{ r.cores.get(c, 0) }}</a>{% endfor %}
+  </div>
+</div>
+
+<form method="get" action="/leads" class="bg-white rounded-lg shadow-sm p-3 mb-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 text-sm">
+  <input name="q" value="{{ f.q }}" placeholder="nome ou telefone" class="border rounded px-2 py-1 col-span-2">
+  <select name="cor" class="border rounded px-2 py-1"><option value="">cor: todas</option>{% for c in cores %}<option value="{{c}}" {% if f.cor==c %}selected{% endif %}>{{c}}</option>{% endfor %}</select>
+  <select name="origem" class="border rounded px-2 py-1"><option value="">origem: todas</option>{% for o in r.origens %}<option value="{{o.origem}}" {% if f.origem==o.origem %}selected{% endif %}>{{o.origem or '—'}} ({{o.n}})</option>{% endfor %}</select>
+  <select name="aba" class="border rounded px-2 py-1"><option value="">mês: todos</option>{% for a in r.abas %}<option value="{{a}}" {% if f.aba==a %}selected{% endif %}>{{a}}</option>{% endfor %}</select>
+  <select name="tipo" class="border rounded px-2 py-1"><option value="">contato: todos</option>{% for t in r.tipos %}<option value="{{t}}" {% if f.tipo==t %}selected{% endif %}>{{t}}</option>{% endfor %}</select>
+  <select name="tag" class="border rounded px-2 py-1"><option value="">etiqueta: todas</option>{% for t in r.tags %}<option value="{{t.tag}}" {% if f.tag==t.tag %}selected{% endif %}>{{t.tag}} ({{t.n}})</option>{% endfor %}</select>
+  <select name="campanha" class="border rounded px-2 py-1"><option value="">campanha: qualquer</option><option value="nenhuma" {% if f.campanha=='nenhuma' %}selected{% endif %}>nunca recebeu</option>{% for c in r.campanhas %}<option value="{{c.nome}}" {% if f.campanha==c.nome %}selected{% endif %}>{{c.nome}} ({{c.leads}})</option>{% endfor %}</select>
+  <select name="sup" class="border rounded px-2 py-1"><option value="">supressão: —</option><option value="nao" {% if f.sup=='nao' %}selected{% endif %}>pode receber</option><option value="sim" {% if f.sup=='sim' %}selected{% endif %}>não recebe</option></select>
+  <div class="col-span-2 md:col-span-4 lg:col-span-8 flex gap-2 justify-end">
+    <a href="/leads" class="px-3 py-1 rounded border text-stone-600">limpar</a>
+    <button class="px-3 py-1 rounded bg-[#1e3a5f] text-white">filtrar</button>
+  </div>
+</form>
+
+<div class="text-xs text-stone-500 mb-2">{{ total }} resultado(s) · página {{ page }} de {{ pages }}</div>
+<div class="bg-white rounded-lg shadow-sm overflow-x-auto">
+<table class="min-w-full text-sm">
+  <thead class="bg-stone-50 text-left text-xs uppercase text-stone-500">
+    <tr><th class="px-3 py-2">Lead</th><th class="px-3 py-2">Telefone</th><th class="px-3 py-2">Origem</th><th class="px-3 py-2">Contato</th><th class="px-3 py-2">Mês</th><th class="px-3 py-2">Cor</th><th class="px-3 py-2">Campanhas</th><th class="px-3 py-2">Etiquetas</th></tr>
+  </thead>
+  <tbody>
+  {% for l in rows %}
+    <tr class="border-t hover:bg-stone-50">
+      <td class="px-3 py-2"><a href="/leads/{{l.tel}}" class="font-medium text-[#1e3a5f] hover:underline">{{ l.nome or '(sem nome)' }}</a>{% if l.nome_msg %}<div class="text-[11px] text-stone-400">msg: {{ l.nome_msg }}</div>{% else %}<div class="text-[11px] text-orange-600">genérico</div>{% endif %}</td>
+      <td class="px-3 py-2 whitespace-nowrap font-mono text-xs">{{ l.tel|tel }}</td>
+      <td class="px-3 py-2">{{ l.origem or '' }}</td>
+      <td class="px-3 py-2 text-xs">{{ l.tipo or '' }}</td>
+      <td class="px-3 py-2 text-xs whitespace-nowrap">{{ l.aba_planilha or '' }}{% if l.primeira_data %}<div class="text-stone-400">{{ l.primeira_data|dt }}</div>{% endif %}</td>
+      <td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs cor-{{l.cor}}">{{ l.cor }}</span></td>
+      <td class="px-3 py-2 text-xs">{% if l.envios %}{{ l.envios }} envio(s){% if l.respondeu %} · <span class="text-blue-700">respondeu</span>{% endif %}<div class="text-stone-400">{{ l.ultimo_envio|dt }}</div>{% else %}<span class="text-stone-400">nenhuma</span>{% endif %}</td>
+      <td class="px-3 py-2">{% if l.supressao %}<span class="tag tag-opt-out">não recebe: {{ l.supressao }}</span>{% endif %}{% for t in (l.tags or '').split() %}<span class="tag tag-{{t}}">{{t}}</span>{% endfor %}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="8" class="px-3 py-6 text-center text-stone-400">nenhum lead com esses filtros</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% if pages > 1 %}
+<div class="flex gap-2 mt-3 text-sm">
+  {% if page > 1 %}<a class="px-3 py-1 border rounded bg-white" href="/leads?{{ qs }}&page={{ page-1 }}">← anterior</a>{% endif %}
+  {% if page < pages %}<a class="px-3 py-1 border rounded bg-white" href="/leads?{{ qs }}&page={{ page+1 }}">próxima →</a>{% endif %}
+  <span class="px-3 py-1 text-stone-500">{{ page }} / {{ pages }}</span>
+</div>
+{% endif %}
+{% endblock %}

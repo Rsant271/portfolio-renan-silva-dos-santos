@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}{{ L.nome or L.tel }}{% endblock %}
+{% block content %}
+<a href="javascript:history.back()" class="text-sm text-stone-500 hover:underline">← voltar</a>
+{% if msg %}<div class="mt-2 mb-2 text-sm bg-green-50 border border-green-200 text-green-800 rounded px-3 py-2">{{ msg }}</div>{% endif %}
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-3">
+  <div class="lg:col-span-1 space-y-4">
+    <div class="bg-white rounded-lg shadow-sm p-4">
+      <div class="flex items-start justify-between">
+        <div>
+          <h1 class="text-xl font-semibold">{{ L.nome or '(sem nome)' }}</h1>
+          <div class="font-mono text-sm text-stone-600">{{ L.tel|tel }}</div>
+        </div>
+        <span class="px-2 py-0.5 rounded text-xs cor-{{ L.cor_planilha or 'branco' }}">{{ L.cor_planilha or 'branco' }}</span>
+      </div>
+      <dl class="mt-3 text-sm grid grid-cols-2 gap-y-1">
+        <dt class="text-stone-500">Origem</dt><dd>{{ L.origem or '—' }}</dd>
+        <dt class="text-stone-500">Contato</dt><dd>{{ L.tipo or '—' }}</dd>
+        <dt class="text-stone-500">Primeira data</dt><dd>{{ L.primeira_data|dt }}</dd>
+        <dt class="text-stone-500">Planilha</dt><dd>{{ L.aba_planilha or '—' }}{% if L.linha_planilha %} · linha {{ L.linha_planilha }}{% endif %}</dd>
+        <dt class="text-stone-500">Bairro</dt><dd>{{ L.bairro or '—' }}</dd>
+        <dt class="text-stone-500">Fontes</dt><dd>{{ L.fontes|join(', ') }}</dd>
+        <dt class="text-stone-500">CRM comercial</dt><dd>{{ L.etapa_crm or '—' }}</dd>
+        <dt class="text-stone-500">Sistema da clínica</dt><dd>{{ L.status_sistema or '—' }}</dd>
+        <dt class="text-stone-500">WhatsApp</dt><dd>{% if L.wa_existe is none %}não verificado{% elif L.wa_existe %}existe{% else %}não existe{% endif %}</dd>
+      </dl>
+      <form method="post" action="/leads/{{L.tel}}/nome_msg" class="mt-3 flex gap-2 text-sm">
+        <input name="nome_msg" value="{{ L.nome_msg or '' }}" placeholder="nome na mensagem (vazio = genérico)" class="border rounded px-2 py-1 flex-1">
+        <button class="px-2 py-1 border rounded">salvar</button>
+      </form>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-4">
+      <h2 class="font-semibold text-sm mb-2">Etiquetas</h2>
+      <div class="mb-2">{% for t in tags %}<form method="post" action="/leads/{{L.tel}}/tag/remover" class="inline"><input type="hidden" name="tag" value="{{t.tag}}"><span class="tag tag-{{t.tag}}">{{t.tag}} <button title="remover ({{t.origem}})" class="opacity-50 hover:opacity-100">×</button></span></form>{% else %}<span class="text-xs text-stone-400">nenhuma</span>{% endfor %}</div>
+      <form method="post" action="/leads/{{L.tel}}/tag" class="flex gap-2 text-sm">
+        <input name="tag" list="tags-sug" placeholder="nova etiqueta" class="border rounded px-2 py-1 flex-1">
+        <datalist id="tags-sug">{% for t in tags_manuais %}<option value="{{t}}">{% endfor %}</datalist>
+        <button class="px-2 py-1 border rounded">+</button>
+      </form>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-400">
+      <h2 class="font-semibold text-sm mb-2">Não receber mais</h2>
+      {% for s in sup %}
+        <div class="text-xs flex justify-between items-center py-1 border-b">
+          <span><b>{{ s.motivo }}</b> · {{ s.fonte }} · {{ s.desde|dt }}{% if s.ate %} → revogado {{ s.ate|dt }}{% endif %}{% if s.evidencia %}<div class="text-stone-500">{{ s.evidencia }}</div>{% endif %}</span>
+          {% if not s.ate %}<form method="post" action="/leads/{{L.tel}}/supressao/{{s.id}}/revogar"><button class="text-stone-400 hover:text-red-700">revogar</button></form>{% endif %}
+        </div>
+      {% endfor %}
+      <form method="post" action="/leads/{{L.tel}}/supressao" class="mt-2 space-y-1 text-sm">
+        <select name="motivo" class="border rounded px-2 py-1 w-full">{% for m in motivos %}<option value="{{m}}">{{m}}</option>{% endfor %}</select>
+        <input name="evidencia" placeholder="motivo / o que a pessoa disse" class="border rounded px-2 py-1 w-full">
+        <button class="px-2 py-1 rounded bg-red-700 text-white w-full">bloquear envios</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="lg:col-span-2 space-y-4">
+    <div class="bg-white rounded-lg shadow-sm p-4">
+      <h2 class="font-semibold text-sm mb-2">Linha do tempo</h2>
+      <form method="post" action="/leads/{{L.tel}}/nota" class="flex gap-2 text-sm mb-3">
+        <input name="texto" placeholder="anotar algo sobre este lead" class="border rounded px-2 py-1 flex-1">
+        <button class="px-2 py-1 border rounded">anotar</button>
+      </form>
+      <ol class="text-sm space-y-2">
+        {% for e in ev %}
+          <li class="flex gap-3 border-l-2 pl-3 {% if e.tipo=='envio' %}border-green-400{% elif e.tipo=='resposta' %}border-blue-400{% elif e.tipo=='opt_out' %}border-red-400{% else %}border-stone-300{% endif %}">
+            <span class="text-xs text-stone-400 whitespace-nowrap w-28">{{ e.quando|dt }}</span>
+            <span>
+              <b>{{ e.tipo }}</b>{% if e.campanha %} · {{ e.campanha }}{% if e.toque %} toque {{ e.toque }}{% endif %}{% if e.variante %} {{ e.variante }}{% endif %}{% endif %}
+              {% if e.entrega %}<span class="tag">{{ e.entrega }}</span>{% endif %}{% if e.midia %}<span class="tag">vídeo</span>{% endif %}
+              {% if e.texto %}<div class="text-stone-600 whitespace-pre-wrap">{{ e.texto }}</div>{% endif %}
+              <div class="text-[11px] text-stone-400">{{ e.fonte }}{% if e.fonte_ref %} · {{ e.fonte_ref }}{% endif %}</div>
+            </span>
+          </li>
+        {% else %}<li class="text-xs text-stone-400">nenhum envio ou resposta registrado ainda</li>{% endfor %}
+      </ol>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-4">
+      <h2 class="font-semibold text-sm mb-2">Na planilha de leads</h2>
+      <table class="text-xs w-full">
+        <thead class="text-stone-500 text-left"><tr><th class="py-1 pr-2">Aba</th><th class="pr-2">Linha</th><th class="pr-2">Data</th><th class="pr-2">Origem</th><th class="pr-2">Nome</th><th class="pr-2">Contato</th><th class="pr-2">Status</th><th class="pr-2">Agenda</th><th class="pr-2">Compareceu</th><th class="pr-2">Próx.</th><th>Cor</th></tr></thead>
+        <tbody>{% for p in linhas %}<tr class="border-t"><td class="py-1 pr-2">{{p.aba}}</td><td class="pr-2">{{p.linha}}</td><td class="pr-2">{{p.data|dt}}</td><td class="pr-2">{{p.origem}}</td><td class="pr-2">{{p.nome}}</td><td class="pr-2">{{p.tipo}}</td><td class="pr-2">{{p.status}}</td><td class="pr-2">{{p.data_agenda}} {{p.hora_agenda}}</td><td class="pr-2">{{p.compareceu}}</td><td class="pr-2">{{p.proximo_contato}}</td><td><span class="px-1 rounded cor-{{p.cor}}">{{p.cor}}</span></td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+
+    {% if ajustes %}<div class="bg-white rounded-lg shadow-sm p-4 text-xs text-stone-500">
+      <h2 class="font-semibold text-sm mb-1 text-stone-800">Ajustes manuais</h2>
+      {% for a in ajustes %}<div>{{ a.quando|dt }} · {{ a.acao }} · {{ a.detalhe }}</div>{% endfor %}
+    </div>{% endif %}
+  </div>
+</div>
+{% endblock %}
